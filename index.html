@@ -7,75 +7,82 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; } /* zinc-950 */
         .animate-pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .8; } }
         .hidden { display: none; }
+        
+        /* Custom Gold Gradient Text */
+        .text-gold {
+            color: #eab308;
+        }
     </style>
 </head>
-<body class="text-gray-900 selection:bg-purple-100 selection:text-purple-700">
+<body class="text-zinc-100 selection:bg-yellow-500 selection:text-black">
 
     <div class="max-w-5xl mx-auto py-8 px-4">
         
         <!-- GUEST REQUEST VIEW -->
         <div id="request-view" class="max-w-md mx-auto space-y-8">
             <header class="text-center space-y-2">
-                <div class="inline-flex items-center justify-center p-3 bg-purple-100 text-purple-600 rounded-full mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                <!-- Changed p-3 (12px) to p-1.5 (6px) -->
+                <div class="inline-flex items-center justify-center p-1.5 bg-zinc-800 text-yellow-500 rounded-2xl mb-2 border border-zinc-700 shadow-lg">
+                    <!-- Changed w-12 h-12 (48px) to w-[60px] h-[60px] -->
+                    <img src="128x128-karaoke-king-logo.png" alt="Karaoke King" class="w-[60px] h-[60px] object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z\'/><path d=\'M19 10v2a7 7 0 0 1-14 0v-2\'/><line x1=\'12\' x2=\'12\' y1=\'19\' y2=\'22\'/></svg>'">
                 </div>
-                <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Karaoke Night</h1>
-                <p class="text-gray-500">Ready for your spotlight? Request a song below.</p>
+                <h1 class="text-3xl font-bold text-white tracking-tight">Karaoke Night</h1>
+                <p class="text-zinc-400">Ready for your spotlight? Request a song below.</p>
             </header>
 
             <!-- Now Singing Widget -->
-            <div id="now-singing-container" class="hidden bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-4 text-white shadow-lg animate-pulse-slow">
-                <div class="flex items-center gap-2 mb-1 opacity-80 uppercase tracking-widest text-[10px] font-bold">
+            <div id="now-singing-container" class="hidden bg-gradient-to-r from-yellow-600 to-amber-700 rounded-2xl p-4 text-white shadow-lg shadow-yellow-900/20 animate-pulse-slow border border-yellow-500/30">
+                <div class="flex items-center gap-2 mb-1 opacity-90 uppercase tracking-widest text-[10px] font-bold text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     Now Singing
                 </div>
-                <div id="now-singing-title" class="font-bold text-lg leading-tight"></div>
-                <div id="now-singing-details" class="text-sm opacity-90"></div>
+                <div id="now-singing-title" class="font-bold text-lg leading-tight text-white drop-shadow-md"></div>
+                <div id="now-singing-details" class="text-sm font-medium text-yellow-100"></div>
             </div>
 
             <!-- Form -->
-            <form id="song-request-form" class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 space-y-4">
+            <form id="song-request-form" class="bg-zinc-900 p-6 rounded-2xl shadow-xl border border-zinc-800 space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                    <label class="block text-sm font-medium text-zinc-400 mb-1">Your Name</label>
                     <div class="relative">
-                        <span class="absolute left-3 top-3 text-gray-400">
+                        <span class="absolute left-3 top-3 text-zinc-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </span>
-                        <input type="text" id="guest-name" maxlength="50" required class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all" placeholder="e.g. John Smith">
+                        <input type="text" id="guest-name" maxlength="50" required class="w-full pl-10 pr-4 py-2 bg-zinc-950 border border-zinc-800 text-white rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all placeholder-zinc-600" placeholder="e.g. John Smith">
                     </div>
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Song Title</label>
+                        <label class="block text-sm font-medium text-zinc-400 mb-1">Song Title</label>
                         <div class="relative">
-                            <span class="absolute left-3 top-3 text-gray-400">
+                            <span class="absolute left-3 top-3 text-zinc-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                             </span>
-                            <input type="text" id="song-title" maxlength="100" required class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all" placeholder="e.g. Bohemian Rhapsody">
+                            <input type="text" id="song-title" maxlength="100" required class="w-full pl-10 pr-4 py-2 bg-zinc-950 border border-zinc-800 text-white rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all placeholder-zinc-600" placeholder="e.g. Bohemian Rhapsody">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Artist</label>
+                        <label class="block text-sm font-medium text-zinc-400 mb-1">Artist</label>
                         <div class="relative">
-                            <span class="absolute left-3 top-3 text-gray-400">
+                            <span class="absolute left-3 top-3 text-zinc-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                             </span>
-                            <input type="text" id="artist" maxlength="100" required class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none transition-all" placeholder="e.g. Queen">
+                            <input type="text" id="artist" maxlength="100" required class="w-full pl-10 pr-4 py-2 bg-zinc-950 border border-zinc-800 text-white rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition-all placeholder-zinc-600" placeholder="e.g. Queen">
                         </div>
                     </div>
                 </div>
                 <div id="status-message" class="hidden p-3 rounded-lg text-sm font-medium text-center"></div>
-                <button type="submit" id="submit-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2">
+                <button type="submit" id="submit-btn" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-4 rounded-xl shadow-lg shadow-yellow-900/20 transition-all flex items-center justify-center gap-2">
                     Send Request 
                 </button>
             </form>
 
             <div class="text-center">
-                <button onclick="switchView('login')" class="text-xs text-gray-400 hover:text-purple-600 flex items-center justify-center gap-1 mx-auto">
+                <button onclick="switchView('login')" class="text-xs text-zinc-500 hover:text-yellow-500 flex items-center justify-center gap-1 mx-auto transition-colors">
                     Admin Login
                 </button>
             </div>
@@ -83,16 +90,16 @@
 
         <!-- LOGIN VIEW -->
         <div id="login-view" class="hidden max-w-md mx-auto p-6 mt-12">
-            <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 space-y-6">
+            <div class="bg-zinc-900 p-8 rounded-2xl shadow-xl border border-zinc-800 space-y-6">
                 <div class="text-center space-y-2">
-                    <h2 class="text-xl font-bold">Host Login</h2>
+                    <h2 class="text-xl font-bold text-white">Host Login</h2>
                 </div>
                 <form id="admin-login-form" class="space-y-4">
-                    <input type="password" id="admin-password" class="w-full px-4 py-3 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-purple-500" placeholder="Admin Password">
+                    <input type="password" id="admin-password" class="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-white rounded-xl outline-none focus:ring-2 focus:ring-yellow-500 placeholder-zinc-600" placeholder="Admin Password">
                     <p id="login-error" class="hidden text-red-500 text-xs text-center"></p>
                     <div class="flex gap-2">
-                        <button type="button" onclick="switchView('request')" class="flex-1 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all">Cancel</button>
-                        <button type="submit" class="flex-1 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all">Login</button>
+                        <button type="button" onclick="switchView('request')" class="flex-1 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold rounded-xl transition-all">Cancel</button>
+                        <button type="submit" class="flex-1 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold rounded-xl transition-all">Login</button>
                     </div>
                 </form>
             </div>
@@ -102,17 +109,17 @@
         <div id="admin-view" class="hidden max-w-4xl mx-auto p-4 sm:p-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Host Dashboard</h1>
-                    <p id="queue-count" class="text-sm text-gray-500">0 requests</p>
+                    <h1 class="text-2xl font-bold text-white">Host Dashboard</h1>
+                    <p id="queue-count" class="text-sm text-zinc-500">0 requests</p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="clear-btn" class="text-sm font-medium text-red-600 hover:text-red-700 bg-red-50 px-4 py-2 rounded-lg border border-red-100">Clear All</button>
-                    <button onclick="switchView('request')" class="text-sm font-medium text-gray-600 bg-white px-4 py-2 rounded-lg border">Guest Mode</button>
+                    <button id="clear-btn" class="text-sm font-medium text-red-400 hover:text-red-300 bg-red-900/20 px-4 py-2 rounded-lg border border-red-900/30">Clear All</button>
+                    <button onclick="switchView('request')" class="text-sm font-medium text-zinc-400 bg-zinc-900 hover:text-white px-4 py-2 rounded-lg border border-zinc-800 transition-colors">Guest Mode</button>
                 </div>
             </div>
-            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                <div id="empty-state" class="p-12 text-center text-gray-400">The queue is empty.</div>
-                <div id="request-list" class="divide-y divide-gray-100"></div>
+            <div class="bg-zinc-900 rounded-2xl shadow-xl border border-zinc-800 overflow-hidden">
+                <div id="empty-state" class="p-12 text-center text-zinc-500">The queue is empty.</div>
+                <div id="request-list" class="divide-y divide-zinc-800"></div>
             </div>
         </div>
     </div>
@@ -252,23 +259,23 @@
 
             currentRequests.forEach((req, idx) => {
                 const item = document.createElement('div');
-                item.className = `p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${req.status === 'completed' ? 'opacity-40 bg-gray-50' : req.status === 'singing' ? 'bg-purple-50 border-l-4 border-purple-500' : ''}`;
+                item.className = `p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${req.status === 'completed' ? 'opacity-40 bg-zinc-950/50' : req.status === 'singing' ? 'bg-yellow-500/10 border-l-4 border-yellow-500' : ''}`;
                 
                 // Create elements manually to avoid innerHTML vulnerabilities
                 const infoDiv = document.createElement('div');
                 infoDiv.className = "flex gap-4 items-center";
                 
                 const rank = document.createElement('span');
-                rank.className = "font-bold text-gray-400";
+                rank.className = "font-bold text-zinc-600";
                 rank.textContent = `#${idx + 1}`;
                 
                 const textWrapper = document.createElement('div');
                 const title = document.createElement('div');
-                title.className = `font-bold ${req.status === 'completed' ? 'line-through' : ''}`;
+                title.className = `font-bold text-white ${req.status === 'completed' ? 'line-through text-zinc-500' : ''}`;
                 title.textContent = req.songTitle;
                 
                 const details = document.createElement('div');
-                details.className = "text-sm text-gray-600";
+                details.className = "text-sm text-zinc-400";
                 details.textContent = `${req.artist} (${req.guestName})`;
                 
                 textWrapper.append(title, details);
@@ -279,7 +286,7 @@
 
                 if (req.status === 'pending') {
                     const singBtn = document.createElement('button');
-                    singBtn.className = "px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold";
+                    singBtn.className = "px-3 py-1 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 rounded-lg text-sm font-bold hover:bg-yellow-500 hover:text-black transition-colors";
                     singBtn.textContent = "Sing";
                     singBtn.onclick = () => window.updateStatus(req.id, 'singing');
                     actionsDiv.appendChild(singBtn);
@@ -287,14 +294,14 @@
 
                 if (req.status === 'singing') {
                     const doneBtn = document.createElement('button');
-                    doneBtn.className = "px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-bold";
+                    doneBtn.className = "px-3 py-1 bg-green-900/30 text-green-400 border border-green-900/50 rounded-lg text-sm font-bold hover:bg-green-900/50 transition-colors";
                     doneBtn.textContent = "Done";
                     doneBtn.onclick = () => window.updateStatus(req.id, 'completed');
                     actionsDiv.appendChild(doneBtn);
                 }
 
                 const delBtn = document.createElement('button');
-                delBtn.className = "px-3 py-1 text-red-400 hover:text-red-600 text-sm";
+                delBtn.className = "px-3 py-1 text-red-500 hover:text-red-400 text-sm opacity-60 hover:opacity-100 transition-opacity";
                 delBtn.textContent = "Remove";
                 delBtn.onclick = () => window.deleteRequest(req.id);
                 actionsDiv.appendChild(delBtn);
@@ -312,7 +319,7 @@
         function showStatus(text, type) {
             const msg = document.getElementById('status-message');
             msg.textContent = text;
-            msg.className = `p-3 rounded-lg text-sm font-medium text-center ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            msg.className = `p-3 rounded-lg text-sm font-medium text-center ${type === 'success' ? 'bg-green-900/30 text-green-400 border border-green-900/50' : 'bg-red-900/30 text-red-400 border border-red-900/50'}`;
             msg.classList.remove('hidden');
             setTimeout(() => msg.classList.add('hidden'), 4000);
         }
