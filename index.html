@@ -149,12 +149,10 @@
         // --- SECURITY: SANITIZATION HELPER ---
         function sanitizeInput(str) {
             if (!str) return "";
-            return str
-                .replace(/[<>]/g, "") // Remove < and >
-                .replace(/&/g, "&amp;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#x27;")
-                .trim();
+            // We use textContent for display, which is secure against XSS.
+            // We only need to remove < and > to prevent storage of HTML tags.
+            // Punctuation like ' and " will remain as-is.
+            return str.replace(/[<>]/g, "").trim();
         }
 
         // --- AUTHENTICATION ---
